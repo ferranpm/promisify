@@ -1,0 +1,12 @@
+{
+    "name": "promisify",
+    "description": "A simple function to convert old callbacks to promises",
+    "author": "Ferran Pelayo Monfort",
+    "version": "0.1.0",
+    "main": "./index.js",
+    "repository": "git://github.com/ferranpm/promisify.git",
+    "homepage": "https://github.com/ferranpm/promisify.git",
+    "license": "MIT",
+    "keywords": ["promises", "callback hell"],
+    "tags": ["promises", "callback hell"]
+}

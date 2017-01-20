@@ -1,19 +1,14 @@
 'use strict';
 
-if (!Object.values) {
-  Object.values = function(obj) {
-    return Object.keys(obj).map(function (k) { return obj[k]; });
-  };
-}
-
 module.exports = function(f) {
-  return function() {
-    var args = Object.values(arguments);
-    return new Promise(function(resolve, reject) {
-      args.push(function(error) {
-        if (error) return reject.apply(this, arguments);
-        resolve.apply(this, Object.values(arguments).slice(1));
-      });
+  return function(...args) {
+    return new Promise((resolve, reject) => {
+      const handler = function(error, ...response) {
+        if (error) return reject(error);
+        resolve.apply(null, response);
+      };
+
+      args.push(handler);
       f.apply(this, args);
     });
   };

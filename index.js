@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(f) {
+  if (f.constructor !== Function) return f;
   return function(...args) {
     return new Promise((resolve, reject) => {
       const handler = function(error, ...response) {
